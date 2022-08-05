@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '../must-match.validator';
-
+interface Title {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-contact-page',
   templateUrl: './contact-page.component.html',
@@ -13,6 +16,15 @@ export class ContactPageComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+
+  titles: Title[] = [
+    {value: 'Mr', viewValue: 'Mr'},
+    {value: 'Mrs', viewValue: 'Mrs'},
+    {value: 'Ms', viewValue: 'Ms'},
+  ];
 
 
   constructor(private formBuilder: FormBuilder) {
